@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+    jenkins:
+        image: jenkins
+        ports:
+            - 8080:8080
+        #volumes:
+        #    - $PWD/jenkins_home:/var/jenkins_home
+    dockerslave:
+        build:
+              context: .
+              dockerfile: 09SlaveDocker
+        image: slavedocker
+        privileged: true
+        #volumes:
+        #    - $PWD/dockers:/var/jenkins
+        
+
+# A volume-ok azért lettek kikommentezve, mert Ubuntu-n a sudo parancs indítja a fájlt, és az így superuserként létrehozott mappák tartalmát a konténerek később nem tudták módosítani
