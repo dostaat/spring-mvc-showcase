@@ -2,12 +2,17 @@ pipeline{
     agent any
     tools {
         maven 'Maven 3.3.9'
-        jdk 'jdk8'
     }
     stages{
         stage("Checkout"){
             steps{
                 git url: "https://github.com/dostaat/spring-mvc-showcase.git"
+            }
+        }
+        stage("MavenInstall"){
+            steps {
+                sh "apt-get update"
+                sh "apt-get install -y maven"
             }
         }
         stage("Packaging"){
