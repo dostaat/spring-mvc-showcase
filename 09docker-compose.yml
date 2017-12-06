@@ -8,10 +8,11 @@ services:
         volumes:
             - ./jenkins_home:/var/jenkins_home
     dockerslave:
-        build:
-              context: .
-              dockerfile: 09SlaveDocker
-        image: slavedocker
+    #    build:
+    #          context: .
+    #          dockerfile: 09SlaveDocker
+    #    image: slavedocker
+        image: leszko/jenkins-docker-slave
         privileged: true
         volumes:
             - ./dockers:/var/jenkins
