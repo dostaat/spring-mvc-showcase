@@ -11,12 +11,6 @@ pipeline{
                 git url: "https://github.com/dostaat/spring-mvc-showcase.git"
             }
         }
-        stage("MavenInstall"){
-            steps {
-                sh "apt-get update"
-                sh "apt-get install -y maven"
-            }
-        }
         stage("Packaging"){
             steps {
                 sh "./mvn package"
